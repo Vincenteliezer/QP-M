@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from '../screens/LoginScreen';
 import AuthStack from './AuthStack';
+import RootStack from './RootStack';
+import { AuthContext } from '../context/AuthContext';
 
-const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <NavigationContainer>
-            <AuthStack />
+            {user ? (
+                <RootStack />
+            ) : (
+                <AuthStack />
+            )}
         </NavigationContainer>
     );
 }
