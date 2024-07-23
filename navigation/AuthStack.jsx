@@ -9,6 +9,7 @@ const AuthLayout = createNativeStackNavigator();
 const AuthStack = () => {
     return (
         <AuthLayout.Navigator
+            initialRouteName='Login'
             screenOptions={{
                 headerShown: false
             }}

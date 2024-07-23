@@ -2,15 +2,12 @@ import { createContext, useEffect, useState } from "react";
 import axios from "../lib/axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
 export const AuthContext = createContext();
-
 const device_name = "mobile_app";
-
 const BASE_URL = process.env.EXPO_PUBLIC_BASE_URL;
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false)
 
@@ -48,32 +45,39 @@ export const AuthProvider = ({ children }) => {
             if (response.data.Bearer) {
                 const token = response.data.Bearer;
                 setUser(token);
-
                 AsyncStorage.setItem("Bearer", JSON.stringify(token))
                 setIsLoading(false)
-                console.log("token", token);
             } else {
                 setError(response.data.Bearer)
                 setIsLoading(false)
-                console.log("api error", response.data.Bearer);
             }
 
         } catch (error) {
             setError(error)
             setIsLoading(false)
-
-            console.log("generic error", error.message);
         }
     };
 
 
+    const logout = async () => {
+        setIsLoading(true);
+        try {
+            await AsyncStorage.removeItem("Bearer")
+            setUser(null)
+            setIsLoading(false);
+        } catch (error) {
+            setError(error)
+            setIsLoading(false)
+        }
+    }
     return (
         <AuthContext.Provider
             value={{
                 user,
                 error,
                 register,
-                isLoading
+                isLoading,
+                logout
             }}
         >
             {children}
