@@ -11,7 +11,9 @@ const RootStack = () => {
         <RootLayout.Navigator>
             <RootLayout.Screen
                 options={{
-                    headerShown: false
+                    headerShown: false,
+                    statusBarColor: "white",
+                    statusBarStyle: "dark"
                 }}
                 name='Tabs'
                 component={BottomTabs} />

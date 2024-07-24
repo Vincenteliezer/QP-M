@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     },
     topView: {
         flex: 1,
-        backgroundColor: "gray"
     },
     bottomView: {
         flex: 1
