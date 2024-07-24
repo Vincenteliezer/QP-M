@@ -1,16 +1,21 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { AuthContext } from '../context/AuthContext';
+import TopUserBar from '../components/TopUserBar';
 
 const HomeScreen = () => {
-    const { logout, isLoading } = useContext(AuthContext);
+    const { logout, isLoading, user } = useContext(AuthContext);
 
     return (
         <SafeAreaView style={styles.base}>
-            <Button icon="logout" mode="contained" onPress={logout} loading={isLoading}>
-                Logout
-            </Button>
+            <View style={styles.topView}>
+                <TopUserBar user={user} />
+            </View>
+            <View style={styles.bottomView}>
+
+            </View>
+
         </SafeAreaView>
     );
 }
@@ -18,7 +23,14 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     base: {
         flex: 1,
-        padding: 20
+        backgroundColor: "white"
+    },
+    topView: {
+        flex: 1,
+        backgroundColor: "gray"
+    },
+    bottomView: {
+        flex: 1
     }
 })
 
