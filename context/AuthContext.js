@@ -30,6 +30,35 @@ export const AuthProvider = ({ children }) => {
         loadToken();
     }, []);
 
+
+    const login = async (email, password) => {
+        setIsLoading(true)
+        try {
+            const response = await axios.post(`${BASE_URL}/api/v1/login_mobile_app`, {
+                email,
+                password,
+                device_name,
+            })
+
+            if (response.data.Bearer) {
+                const token = response.data.Bearer;
+                setUser(token);
+                AsyncStorage.setItem("Bearer", JSON.stringify(token))
+                setIsLoading(false)
+                console.log("user added successfully", token);
+            } else {
+                setError(response.data.Bearer)
+                setIsLoading(false)
+                console.log("an error occurred", response.data.Error);
+
+            }
+        } catch (error) {
+            setError(error)
+            setIsLoading(false)
+            console.log("generic error", error);
+        }
+    }
+
     const register = async (name, email, phone, password, password_confirmation) => {
         setIsLoading(true)
         try {
@@ -75,6 +104,7 @@ export const AuthProvider = ({ children }) => {
             value={{
                 user,
                 error,
+                login,
                 register,
                 isLoading,
                 logout

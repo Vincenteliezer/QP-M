@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Image, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
 import * as Yup from 'yup'
 import { Formik } from 'formik';
@@ -124,7 +124,7 @@ const RegisterScreen = ({ navigation }) => {
                         <View style={styles.signUpTxtWrapper}>
                             <Text variant="titleMedium">Already registered?</Text>
                             <Button
-                                onPress={handleSubmit}
+                                onPress={() => navigation.navigate('Login')}
                                 mode="outlined">
                                 Login
                             </Button>

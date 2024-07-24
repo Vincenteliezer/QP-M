@@ -1,8 +1,12 @@
-import React from 'react';
-import { Image, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import React, { useContext } from 'react';
+import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
+import * as Yup from 'yup'
+import { Formik } from 'formik';
+import { AuthContext } from '../context/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
+    const { login, isLoading, error } = useContext(AuthContext);
     return (
         <SafeAreaView style={styles.base}>
             <View style={styles.logoWrapper}>
@@ -16,39 +20,71 @@ const LoginScreen = ({ navigation }) => {
                 <Text variant="titleLarge">Welcome back!</Text>
                 <Text variant="headlineLarge">Please, Log In.</Text>
             </View>
-            <View style={styles.cardWrapper}>
-                <TextInput
-                    style={styles.input}
-                    label="Email"
-                    mode='outlined'
-                />
+            <Formik
+                initialValues={{
+                    email: '',
+                    password: ''
+                }}
+                validationSchema={
+                    Yup.object({
+                        email: Yup.string()
+                            .email()
+                            .required("Email is required!"),
+                        password: Yup.string()
+                            .required("Password is required!")
+                    })
+                }
+                onSubmit={async (values) => {
+                    await login(values.email, values.password)
+                }}
+            >
+                {({ handleChange, handleBlur, handleSubmit, errors, isValid, values, touched }) => (
+                    <View style={styles.cardWrapper}>
+                        <TextInput
+                            id='email'
+                            style={styles.input}
+                            label={errors.email ? errors.email : "Email"}
+                            mode='outlined'
+                            value={values.email}
+                            onChangeText={handleChange('email')}
+                            onBlur={handleBlur('email')}
+                            error={errors.email && touched.email}
+                        />
 
-                <TextInput
-                    style={styles.input}
-                    label="Password"
-                    mode='outlined'
-                    secureTextEntry
-                />
+                        <TextInput
+                            id='password'
+                            style={styles.input}
+                            label={errors.password ? errors.password : "Password"}
+                            mode='outlined'
+                            secureTextEntry
+                            value={values.password}
+                            onChangeText={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            error={errors.password && touched.password}
+                        />
 
+                        <Button
+                            loading={isLoading}
+                            onPress={handleSubmit}
+                            mode="contained"
+                            uppercase
+                            style={styles.loginBtn}
+                            contentStyle={{
+                                height: 50,
+                            }}
+                        >
+                            Login
+                        </Button>
+                    </View>
+                )}
+            </Formik>
+            <View style={styles.signUpTxtWrapper}>
+                <Text variant="titleMedium">Don't have an account?</Text>
                 <Button
-                    onPress={() => console.log("pressed")}
-                    mode="contained"
-                    uppercase
-                    style={styles.loginBtn}
-                    contentStyle={{
-                        height: 50,
-                    }}
-                >
-                    Login
+                    onPress={() => navigation.navigate('Register')}
+                    mode="outlined">
+                    Sign Up!
                 </Button>
-                <View style={styles.signUpTxtWrapper}>
-                    <Text variant="titleMedium">Don't have an account?</Text>
-                    <Button
-                        onPress={() => navigation.navigate('Register')}
-                        mode="outlined">
-                        Sign Up!
-                    </Button>
-                </View>
             </View>
         </SafeAreaView>
     );
