@@ -45,17 +45,14 @@ export const AuthProvider = ({ children }) => {
                 setUser(token);
                 AsyncStorage.setItem("Bearer", JSON.stringify(token))
                 setIsLoading(false)
-                console.log("user added successfully", token);
             } else {
-                setError(response.data.Bearer)
+                setError(response.data.Error)
                 setIsLoading(false)
-                console.log("an error occurred", response.data.Error);
 
             }
         } catch (error) {
             setError(error)
             setIsLoading(false)
-            console.log("generic error", error);
         }
     }
 
@@ -99,6 +96,10 @@ export const AuthProvider = ({ children }) => {
             setIsLoading(false)
         }
     }
+
+    const resetError = () => {
+        setError(null)
+    }
     return (
         <AuthContext.Provider
             value={{
@@ -107,7 +108,8 @@ export const AuthProvider = ({ children }) => {
                 login,
                 register,
                 isLoading,
-                logout
+                logout,
+                resetError
             }}
         >
             {children}

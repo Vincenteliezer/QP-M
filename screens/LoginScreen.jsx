@@ -1,12 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
 import * as Yup from 'yup'
 import { Formik } from 'formik';
 import { AuthContext } from '../context/AuthContext';
+import SnackAlert from '../components/ui/SnackAlert';
 
 const LoginScreen = ({ navigation }) => {
-    const { login, isLoading, error } = useContext(AuthContext);
+    const { login, isLoading, error, resetError } = useContext(AuthContext);
+    const [visible, setVisible] = useState(false);
+
+    const onDismissSnack = () => {
+        setVisible(false);
+        resetError();
+    };
+
+    useEffect(() => {
+        if (error) {
+            setVisible(true);
+        }
+    }, [error]);
+
     return (
         <SafeAreaView style={styles.base}>
             <View style={styles.logoWrapper}>
@@ -86,6 +100,9 @@ const LoginScreen = ({ navigation }) => {
                     Sign Up!
                 </Button>
             </View>
+
+
+            <SnackAlert error={error} visible={visible} onDismiss={onDismissSnack} />
         </SafeAreaView>
     );
 }
