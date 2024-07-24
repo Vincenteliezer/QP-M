@@ -26,7 +26,8 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@tanstack/eslint-plugin-query": "^5.51.12"
   },
   "private": true
 }
