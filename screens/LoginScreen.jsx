@@ -9,6 +9,7 @@ import SnackAlert from '../components/ui/SnackAlert';
 const LoginScreen = ({ navigation }) => {
     const { login, isLoading, error, resetError } = useContext(AuthContext);
     const [visible, setVisible] = useState(false);
+    const [passwordShow, setPasswordShow] = useState(false)
 
     const onDismissSnack = () => {
         setVisible(false);
@@ -20,6 +21,10 @@ const LoginScreen = ({ navigation }) => {
             setVisible(true);
         }
     }, [error]);
+
+    const handlePasswordShow = () => {
+        setPasswordShow(!passwordShow);
+    };   
 
     return (
         <SafeAreaView style={styles.base}>
@@ -66,15 +71,21 @@ const LoginScreen = ({ navigation }) => {
                         />
 
                         <TextInput
-                            id='password'
+                            id="password"
                             style={styles.input}
-                            label={errors.password ? errors.password : "Password"}
-                            mode='outlined'
-                            secureTextEntry
+                            label={errors.password ? errors.password : 'Password'}
+                            mode="outlined"
+                            secureTextEntry={!passwordShow}
                             value={values.password}
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             error={errors.password && touched.password}
+                            right={
+                                <TextInput.Icon
+                                    onPress={handlePasswordShow}
+                                    icon={passwordShow ? 'eye-off' : 'eye'}
+                                />
+                            }
                         />
 
                         <Button

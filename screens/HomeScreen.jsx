@@ -1,21 +1,23 @@
 import React, { useContext } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import { AuthContext } from '../context/AuthContext';
 import TopUserBar from '../components/TopUserBar';
+import AmountsSection from '../components/AmountsSection';
+import Card from '../components/Card';
+import OwnerCard from '../components/Card';
 
 const HomeScreen = () => {
-    const { logout, isLoading, user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     return (
         <SafeAreaView style={styles.base}>
-            <View style={styles.topView}>
-                <TopUserBar user={user} />
+            <TopUserBar user={user} />
+            <AmountsSection />
+            <OwnerCard />
+            <View style={styles.statementTxt}>
+                <Text variant='titleLarge'>Statements history</Text>
             </View>
-            <View style={styles.bottomView}>
-
-            </View>
-
         </SafeAreaView>
     );
 }
@@ -26,11 +28,12 @@ const styles = StyleSheet.create({
         backgroundColor: "white"
     },
     topView: {
-        flex: 1,
+
     },
-    bottomView: {
-        flex: 1
+    statementTxt: {
+        padding: 20
     }
+
 })
 
 export default HomeScreen;
