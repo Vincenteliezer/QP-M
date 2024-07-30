@@ -8,13 +8,12 @@ import Card from '../components/Card';
 import OwnerCard from '../components/Card';
 
 const HomeScreen = () => {
-    const { user } = useContext(AuthContext);
-
+    const { user, BASE_URL } = useContext(AuthContext);
     return (
         <SafeAreaView style={styles.base}>
             <TopUserBar user={user} />
             <AmountsSection />
-            <OwnerCard />
+            <OwnerCard user={user} url={BASE_URL} />
             <View style={styles.statementTxt}>
                 <Text variant='titleLarge'>Statements history</Text>
             </View>

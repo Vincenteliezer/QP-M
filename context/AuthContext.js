@@ -84,7 +84,6 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-
     const logout = async () => {
         setIsLoading(true);
         try {
@@ -109,7 +108,8 @@ export const AuthProvider = ({ children }) => {
                 register,
                 isLoading,
                 logout,
-                resetError
+                resetError,
+                BASE_URL
             }}
         >
             {children}
