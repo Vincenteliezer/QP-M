@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import BottomTabs from './BottomTabs';
 import ProfileScreen from '../screens/ProfileScreen';
+import CardScreen from '../screens/CardScreen';
 
 const RootLayout = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ const RootStack = () => {
                 name='Tabs'
                 component={BottomTabs} />
             <RootLayout.Screen name='Profile' component={ProfileScreen} />
+            <RootLayout.Screen name='Card' component={CardScreen} />
         </RootLayout.Navigator>
     );
 }

@@ -5,11 +5,11 @@ import { Card, Text } from 'react-native-paper';
 const AmountsSection = () => {
     return (
         <View style={styles.base}>
-            <Card style={styles.card}>
+            <Card style={styles.card} mode='contained'>
                 <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
                 <Text variant='titleLarge'>3287934</Text>
             </Card>
-            <Card style={styles.card}>
+            <Card style={styles.card} mode='contained'>
                 <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
                 <Text variant='titleLarge'>3287934</Text>
             </Card>
