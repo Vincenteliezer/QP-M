@@ -24,7 +24,7 @@ const LoginScreen = ({ navigation }) => {
 
     const handlePasswordShow = () => {
         setPasswordShow(!passwordShow);
-    };   
+    };
 
     return (
         <SafeAreaView style={styles.base}>
@@ -80,12 +80,7 @@ const LoginScreen = ({ navigation }) => {
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             error={errors.password && touched.password}
-                            right={
-                                <TextInput.Icon
-                                    onPress={handlePasswordShow}
-                                    icon={passwordShow ? 'eye-off' : 'eye'}
-                                />
-                            }
+                            right={props => <TextInput.Icon onPress={handlePasswordShow} {...props} icon={passwordShow ? 'eye-off' : 'eye'} />}
                         />
 
                         <Button

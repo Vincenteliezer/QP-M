@@ -1,13 +1,25 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { Card, List, Text } from 'react-native-paper';
+import { ActivityIndicator, Card, List, Text } from 'react-native-paper';
 import { useStatements } from '../../hooks/useStatements';
 
 const GetStatements = () => {
-    const { statements } = useStatements();
+    const { statements, error, isLoading } = useStatements();
+
+    if (isLoading) {
+        return <ActivityIndicator size="small" />
+    }
+
+    if (error) {
+        return <Text>A problem occurred!</Text>
+
+    }
+    
+    const topFive = statements.data;
+
     return (
         <FlatList
-            data={statements ? statements.slice(0, 5) : []}
+            data={topFive ? topFive.slice(0, 5) : []}
             renderItem={({ item }) => (
                 <Card style={{ marginHorizontal: 20, marginVertical: 8 }} mode='outlined'>
                     <List.Item

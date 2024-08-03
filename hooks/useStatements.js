@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { ActivityIndicator, Text } from "react-native-paper";
 
 export const useStatements = () => {
     const { user, BASE_URL } = useContext(AuthContext);
@@ -18,19 +17,14 @@ export const useStatements = () => {
                 },
 
             })
-            return response.data.data
+            return response.data
         }
     })
 
-    if (isLoading) {
-        return <ActivityIndicator size="small" />
-    }
-
-    if (error) {
-        return <Text>A problem occurred!</Text>
-
-    }
+  
     return {
-        statements
+        statements,
+        error,
+        isLoading
     }
 }

@@ -9,7 +9,7 @@ const BASE_URL = process.env.EXPO_PUBLIC_BASE_URL;
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const loadToken = async () => {
