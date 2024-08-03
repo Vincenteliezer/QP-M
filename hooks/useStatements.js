@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { ActivityIndicator, Text } from "react-native-paper";
 
 export const useStatements = () => {
     const { user, BASE_URL } = useContext(AuthContext);

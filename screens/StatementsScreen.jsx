@@ -1,14 +1,22 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 
 const StatementsScreen = () => {
+    const navigation = useNavigation()
+
+ 
     return (
-        <View>
-            
-        </View>
+        <SafeAreaView style={styles.base}>
+
+        </SafeAreaView>
     );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    base: {
+        flex: 1
+    }
+})
 
 export default StatementsScreen;
