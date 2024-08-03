@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Quepay-Merchant",
-    "slug": "Quepay-Merchant",
+    "name": "Quepay",
+    "slug": "Quepay-User",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Card, Text } from 'react-native-paper';
+import { UserCardDetails } from '../hooks/useCardDetails';
 
 const AmountsSection = () => {
+    const { cardDetails } = UserCardDetails();
     return (
         <View style={styles.base}>
             <Card style={styles.card} mode='contained'>
@@ -11,7 +13,7 @@ const AmountsSection = () => {
             </Card>
             <Card style={styles.card} mode='contained'>
                 <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
-                <Text variant='titleLarge'>3287934</Text>
+                <Text variant='titleLarge'>{cardDetails?.balance ? cardDetails?.balance : "N/A"}</Text>
             </Card>
         </View>
     );

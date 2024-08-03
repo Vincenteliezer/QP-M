@@ -1,28 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
-import axios from '../../lib/axios';
-import { ActivityIndicator, Card, List, MD3Colors, Text } from 'react-native-paper';
+import { FlatList, StyleSheet } from 'react-native';
+import { Card, List, Text } from 'react-native-paper';
 
-const GetStatements = ({ url, user }) => {
+const GetStatements = () => {
 
-    const { data, error, isLoading } = useQuery({
-        queryKey: ['GetUserStatements'],
-        queryFn: async () => {
-            const response = await axios.post(`${url}/api/v1/card-usage`, {}, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${user}`
-                },
 
-            })
-            return response.data.data
-        }
-    })
-
-    if (isLoading) {
-        return <ActivityIndicator size="small" />
-    }
     return (
         <FlatList
             data={data ? data.slice(0, 5) : []}
