@@ -19,14 +19,14 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ramesheliezer.QuepayMerchant"
+      "package": ""
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "9cef00ac-0041-4f75-8823-ecbb003d50de"
+        "projectId": ""
       }
     },
     "plugins": [
