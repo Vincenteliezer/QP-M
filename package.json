@@ -25,7 +25,8 @@
     "react-native-screens": "3.31.1",
     "react-native-vector-icons": "^10.1.0",
     "yup": "^1.4.0",
-    "@shopify/flash-list": "1.6.4"
+    "@shopify/flash-list": "1.6.4",
+    "expo-secure-store": "~13.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

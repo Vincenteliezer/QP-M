@@ -16,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
             <AmountsSection />
             <OwnerCard user={user} url={BASE_URL} />
             <View style={styles.statementTxt}>
-                <Text variant='titleLarge'>Statements history</Text>
+                <Text variant='bodyLarge'>Statements history</Text>
                 <Button mode='contained-tonal' icon='chevron-right' onPress={() => navigation.navigate("Statements")}>
                     More
                 </Button>

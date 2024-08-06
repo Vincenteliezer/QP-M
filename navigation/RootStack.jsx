@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import BottomTabs from './BottomTabs';
 import ProfileScreen from '../screens/ProfileScreen';
 import CardScreen from '../screens/CardScreen';
+import ScanScreen from '../screens/ScanScreen';
 
 const RootLayout = createNativeStackNavigator();
 
@@ -26,7 +27,21 @@ const RootStack = () => {
                     animation: "ios"
                 }}
             />
-            <RootLayout.Screen name='Card' component={CardScreen} />
+            <RootLayout.Screen
+                name='Card'
+                options={{
+                    headerShadowVisible: false,
+                    animation: "ios"
+                }}
+                component={CardScreen} />
+
+            <RootLayout.Screen
+                name='Scan'
+                options={{
+                    headerShadowVisible: false,
+                    animation: "fade_from_bottom"
+                }}
+                component={ScanScreen} />
         </RootLayout.Navigator>
     );
 }

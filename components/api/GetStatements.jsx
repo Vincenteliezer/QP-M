@@ -1,6 +1,6 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
-import { ActivityIndicator, Card, List, Text } from 'react-native-paper';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Card, Chip, List, Text } from 'react-native-paper';
 import { useStatements } from '../../hooks/useStatements';
 
 const GetStatements = () => {
@@ -11,7 +11,11 @@ const GetStatements = () => {
     }
 
     if (error) {
-        return <Text>A problem occurred!</Text>
+        return (
+            <View style={{padding: 20}}>
+                <Chip mode='flat' >Error fetching statements</Chip>
+            </View>
+        )
 
     }
     
@@ -44,6 +48,5 @@ const GetStatements = () => {
     );
 }
 
-const styles = StyleSheet.create({})
 
 export default GetStatements;

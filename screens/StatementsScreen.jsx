@@ -2,7 +2,7 @@ import { FlashList } from '@shopify/flash-list';
 import React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { useStatements } from '../hooks/useStatements';
-import { ActivityIndicator, List, Text } from 'react-native-paper';
+import { ActivityIndicator, Chip, List, Text } from 'react-native-paper';
 
 const StatementsScreen = () => {
     const { statements, error, isLoading } = useStatements();
@@ -13,7 +13,11 @@ const StatementsScreen = () => {
     }
 
     if (error) {
-        return <Text>A problem occurred!</Text>
+        return (
+            <View style={{ padding: 20 }}>
+                <Chip mode='flat' >Error fetching statements</Chip>
+            </View>
+        )
 
     }
     return (

@@ -6,7 +6,6 @@ import axios from "axios";
 export const useStatements = () => {
     const { user, BASE_URL } = useContext(AuthContext);
 
-
     const { data: statements, error, isLoading } = useQuery({
         queryKey: ['GetUserStatements'],
         queryFn: async () => {
@@ -20,8 +19,7 @@ export const useStatements = () => {
             return response.data
         }
     })
-
-  
+    
     return {
         statements,
         error,
