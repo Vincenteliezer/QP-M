@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Quepay",
-    "slug": "Quepay-User",
+    "slug": "quepay-user",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -26,7 +26,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "01621869-424d-4643-8fa4-e6d8341acd3f"
+        "projectId": "9cef00ac-0041-4f75-8823-ecbb003d50de"
       }
     },
     "plugins": [
