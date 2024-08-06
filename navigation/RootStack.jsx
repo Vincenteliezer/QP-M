@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import BottomTabs from './BottomTabs';
 import ProfileScreen from '../screens/ProfileScreen';
 import CardScreen from '../screens/CardScreen';
@@ -18,7 +18,14 @@ const RootStack = () => {
                 }}
                 name='Tabs'
                 component={BottomTabs} />
-            <RootLayout.Screen name='Profile' component={ProfileScreen} />
+            <RootLayout.Screen
+                name='Profile'
+                component={ProfileScreen}
+                options={{
+                    headerShadowVisible: false,
+                    animation: "ios"
+                }}
+            />
             <RootLayout.Screen name='Card' component={CardScreen} />
         </RootLayout.Navigator>
     );

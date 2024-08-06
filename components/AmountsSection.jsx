@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Card, Text } from 'react-native-paper';
 import { UserCardDetails } from '../hooks/useCardDetails';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 const AmountsSection = () => {
     const { cardDetails } = UserCardDetails();
@@ -11,12 +12,16 @@ const AmountsSection = () => {
     return (
         <View style={styles.base}>
             <Card style={styles.card} mode='contained'>
-                <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
-                <Text variant='titleLarge'>1000000765</Text>
+                <View style={styles.textWrapper}>
+                    <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
+                    <Text variant='titleLarge'>{formattedBalance ? formattedBalance : "N/A"}</Text>
+                </View>
             </Card>
             <Card style={styles.card} mode='contained'>
-                <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
-                <Text variant='titleLarge'>{formattedBalance ? formattedBalance : "N/A"}</Text>
+                <View style={styles.textWrapper}>
+                    <Text variant='titleSmall' style={styles.text}>Scan to pay</Text>
+                    <AntDesign name="scan1" size={24} color="black" />
+                </View>
             </Card>
         </View>
     );
@@ -34,6 +39,9 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "gray"
+    },
+    textWrapper: {
+        gap: 8
     }
 })
 

@@ -21,7 +21,7 @@ const GetStatements = () => {
         <FlatList
             data={topFive ? topFive.slice(0, 5) : []}
             renderItem={({ item }) => (
-                <Card style={{ marginHorizontal: 20, marginVertical: 8 }} mode='outlined'>
+                <Card style={{ marginHorizontal: 20, marginVertical: 8 }} mode='contained'>
                     <List.Item
                         title={
                             item.purpose == "credit" ? (
