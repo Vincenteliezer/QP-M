@@ -57,7 +57,7 @@ const LoginScreen = ({ navigation }) => {
                     await login(values.email, values.password)
                 }}
             >
-                {({ handleChange, handleBlur, handleSubmit, errors, isValid, values, touched }) => (
+                {({ handleChange, handleBlur, handleSubmit, errors, values, touched }) => (
                     <View style={styles.cardWrapper}>
                         <TextInput
                             id='email'
@@ -80,7 +80,7 @@ const LoginScreen = ({ navigation }) => {
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             error={errors.password && touched.password}
-                            right={props => <TextInput.Icon onPress={handlePasswordShow} {...props} icon={passwordShow ? 'eye-off' : 'eye'} />}
+                            right={<TextInput.Icon onPress={handlePasswordShow} icon={passwordShow ? 'eye-off' : 'eye'} />}
                         />
 
                         <Button

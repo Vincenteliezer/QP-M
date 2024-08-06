@@ -28,7 +28,7 @@ const StatementsScreen = () => {
                 key={statements.data.id}
                 renderItem={({ item }) => (
                     <List.Accordion
-                        style={{ backgroundColor: "white", marginVertical: 3, elevation: 2 }}
+                        style={{ backgroundColor: "white", marginVertical: 3 }}
                         title={item.purpose === "credit" ? `Amount paid: ${item.TransAmount} KES` : `-${item.TransAmount}.00 KES`}
                         left={props => <List.Icon {...props} icon="cash" />}
                         description={`Paid to: ${item.shop_name}`}

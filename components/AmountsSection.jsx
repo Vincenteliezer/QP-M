@@ -5,15 +5,18 @@ import { UserCardDetails } from '../hooks/useCardDetails';
 
 const AmountsSection = () => {
     const { cardDetails } = UserCardDetails();
+    const balance = cardDetails?.balance;
+    const formattedBalance = Number(balance).toLocaleString();
+
     return (
         <View style={styles.base}>
             <Card style={styles.card} mode='contained'>
                 <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
-                <Text variant='titleLarge'>3287934</Text>
+                <Text variant='titleLarge'>1000000765</Text>
             </Card>
             <Card style={styles.card} mode='contained'>
                 <Text variant='titleSmall' style={styles.text}>Total Balance</Text>
-                <Text variant='titleLarge'>{cardDetails?.balance ? cardDetails?.balance : "N/A"}</Text>
+                <Text variant='titleLarge'>{formattedBalance ? formattedBalance : "N/A"}</Text>
             </Card>
         </View>
     );
