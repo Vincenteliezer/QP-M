@@ -17,7 +17,7 @@ const CardScreen = () => {
 
     return (
         <Container>
-            <ScrollView showsVerticalScrollIndicator={fals}>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <NativeDialog visible={visibleDialog} onDismiss={hideDialog}>
                     <LoadCard />
                 </NativeDialog>
